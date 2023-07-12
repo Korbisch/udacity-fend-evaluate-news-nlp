@@ -10,13 +10,12 @@ function handleSubmit(event) {
     let formText = document.getElementById('text').value;
 
     console.log("::: Form Submitted :::")
-    fetch('http://localhost:8080/sentiment') //?text=' + formText)
+    fetch('http://localhost:8080/sentiment?text=' + formText)
     .then(res => res.json())
     .then(function(res) {
         document.getElementById('polarity').innerHTML = getPolarity(res.score_tag);
         document.getElementById('agreement').innerHTML = res.agreement;
         document.getElementById('subjectivity').innerHTML = res.subjectivity;
-        console.log(res);
     })
 }
 

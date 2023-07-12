@@ -22,11 +22,10 @@ app.listen(8080, function () {
 })
 
 app.get('/sentiment', async function (req, res) {
-    console.log("received request");
     const form = new FormData();
     form.append('key', process.env.API_KEY);
     form.append('lang', 'en');
-    form.append('txt', 'Main dishes were quite good, but desserts were too sweet for me.');
+    form.append('txt', req.query.text);
     const response = await axios.post('https://api.meaningcloud.com/sentiment-2.1', form);
     res.json(response.data);
 })
