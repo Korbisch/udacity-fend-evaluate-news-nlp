@@ -1,8 +1,3 @@
-const form = document.getElementById("form");
-form.addEventListener("submit", (event) => {
-    handleSubmit(event);
-});
-
 function handleSubmit(event) {
     event.preventDefault()
 
@@ -30,3 +25,5 @@ function getPolarity(score) {
         return "no polarity / neutral";
     }
 }
+
+export { getPolarity }
