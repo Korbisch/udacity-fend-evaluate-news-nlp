@@ -1,16 +1,15 @@
 var path = require('path')
 const express = require('express')
 const mockAPIResponse = require('./mockAPI.js')
+const axios = require('axios')
+const FormData = require('form-data');
 
 const dotenv = require('dotenv');
 dotenv.config();
-console.log(`Your API key is ${process.env.API_KEY}`);
 
 const app = express()
 
 app.use(express.static('dist'))
-
-console.log(__dirname)
 
 app.get('/', function (req, res) {
     // res.sendFile('dist/index.html')
@@ -22,6 +21,12 @@ app.listen(8080, function () {
     console.log('Example app listening on port 8080!')
 })
 
-app.get('/test', function (req, res) {
-    res.send(mockAPIResponse)
+app.get('/sentiment', async function (req, res) {
+    console.log("received request");
+    const form = new FormData();
+    form.append('key', process.env.API_KEY);
+    form.append('lang', 'en');
+    form.append('txt', 'Main dishes were quite good, but desserts were too sweet for me.');
+    const response = await axios.post('https://api.meaningcloud.com/sentiment-2.1', form);
+    res.json(response.data);
 })

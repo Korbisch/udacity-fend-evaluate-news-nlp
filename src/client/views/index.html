@@ -3,11 +3,6 @@
     <head>
         <meta charset="utf-8">
         <title>Test</title>
-        <link rel="stylesheet" href="/styles/resets.css">
-        <link rel="stylesheet" href="/styles/base.css">
-        <link rel="stylesheet" href="/styles/header.css">
-        <link rel="stylesheet" href="/styles/form.css">
-        <link rel="stylesheet" href="/styles/footer.css">
     </head>
 
     <body>
@@ -23,15 +18,26 @@
 
         <main>
             <section>
-                <form class="" onsubmit="return handleSubmit(event)">
-                    <input id="name" type="text" name="input" value="" onblur="onBlur()" placeholder="Name">
-                    <input type="submit" name="" value="submit" onclick="return handleSubmit(event)" onsubmit="return handleSubmit(event)">
+                <form id="form">
+                    <label for="text"></label>
+                    <input id="text" type="text" name="input" value="" placeholder="Text">
+                    <input type="submit" name="" value="submit">
                 </form>
             </section>
 
             <section>
-                <strong>Form Results:</strong>
-                <div id="results"></div>
+                <span>Polarity:</span>
+                <span id="polarity"></span>
+            </section>
+
+            <section>
+                <span>Agreement:</span>
+                <span id="agreement"></span>
+            </section>
+
+            <section>
+                <span>Subjectivity:</span>
+                <span id="subjectivity"></span>
             </section>
         </main>
 
